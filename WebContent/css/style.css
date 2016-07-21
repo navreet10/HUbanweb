@@ -1,0 +1,170 @@
+@CHARSET "UTF-8";
+/***********************************************/
+/* HTML tag styles                             */
+/***********************************************/
+
+/* CSS Reset   
+----------------------------------------------------------*/
+
+/***********************login**************************/
+h2 {
+	color: #F90B6D;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 34px;
+	font-weight: 300;
+	line-height: 40px;
+	margin: 0 0 16px;
+}
+
+h3 {
+	color: #F90B6D;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 34px;
+	font-weight: 300;
+	line-height: 40px;
+	margin: 0 0 16px;
+}
+
+.login-help {
+	font-size: 12px;
+}
+
+.body {
+	background-color: #ffc0cb;/* 
+	background: url(../images/bg.jpg);
+	background-image: url(../images/bg7.jpg);
+	  -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;   */
+	
+}
+.star-five {
+	margin: 50px 0;
+	position: relative;
+	display: block;
+	color: red;
+	width: 0px;
+	height: 0px;
+	border-right: 100px solid transparent;
+	border-bottom: 70px solid red;
+	border-left: 100px solid transparent;
+	-moz-transform: rotate(35deg);
+	-webkit-transform: rotate(35deg);
+	-ms-transform: rotate(35deg);
+	-o-transform: rotate(35deg);
+}
+.glyphicon.glyphicon-star{
+    font-size: 35px;
+}
+.loginBody {
+	/* background-image: url(../images/bgl6.jpg);
+	  -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;  */ 
+	background-color: #e5e5e5;
+}
+
+.form-signin input[type="text"] {
+	margin-bottom: 5px;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.form-signin input[type="password"] {
+	margin-bottom: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.form-signin .form-control {
+	position: relative;
+	font-size: 16px;
+	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+	height: auto;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.vertical-offset-100 {
+	padding-top: 100px;
+}
+
+.img-responsive {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	margin: auto;
+}
+
+.panel {
+	margin-bottom: 20px;
+	background-color: rgba(255, 255, 255, 0.75);
+	border: 1px solid transparent;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+/***********************search**************************/
+.search-form .form-group {
+	float: right !important;
+	transition: all 0.35s, border-radius 0s;
+	width: 32px;
+	height: 32px;
+	background-color: #fff;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+	border-radius: 25px;
+	border: 1px solid #ccc;
+}
+
+.search-form .form-group input.form-control {
+	padding-right: 20px;
+	border: 0 none;
+	background: transparent;
+	box-shadow: none;
+	display: block;
+}
+
+.search-form .form-group input.form-control::-webkit-input-placeholder {
+	display: none;
+}
+
+.search-form .form-group input.form-control:-moz-placeholder {
+	/* Firefox 18- */
+	display: none;
+}
+
+.search-form .form-group input.form-control::-moz-placeholder {
+	/* Firefox 19+ */
+	display: none;
+}
+
+.search-form .form-group input.form-control:-ms-input-placeholder {
+	display: none;
+}
+
+.search-form .form-group:hover, .search-form .form-group.hover {
+	width: 100%;
+	border-radius: 4px 25px 25px 4px;
+}
+
+.search-form .form-group span.form-control-feedback {
+	position: absolute;
+	top: -1px;
+	right: -2px;
+	z-index: 2;
+	display: block;
+	width: 34px;
+	height: 34px;
+	line-height: 34px;
+	text-align: center;
+	color: #3596e0;
+	left: initial;
+	font-size: 14px;
+}
+
+/********************* end **********************/
