@@ -16,7 +16,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-<script src="javascripts/home.js"></script>
+<script src="javascripts/filter.js"></script>
 
 <!-- Latest compiled JavaScript -->
 <script
@@ -115,14 +115,11 @@
 					<%-- <c:set var="res" scope="session" value="${result}" />
 						<c:if test="${res != null}"> --%>
 					<div id="accordion">
-						<h3>Enroll Classes</h3>
+						<h3>View Your Classes</h3>
 						<div> 
-							<form id="enroll" action="EnrollClass" method="post">
-								Days: 1- Mon, 2-Tue, 3- Wed, 4-Thu, 5-Fri, 6-Sat
 								<table class="table table-striped">
 									<thead>
 										<tr>
-											<th></th>
 											<th>CRN</th>
 											<th>Course</th>
 											<th>Days</th>
@@ -132,9 +129,8 @@
 									</thead>
 
 									<tbody>
-										<c:forEach var="result" items="${classes}">
+										<c:forEach var="result" items="${classesInst}">
 											<tr>
-												<td><input type="checkbox" name="enrollChecks" value="enroll${result.crnid}"></td>
 												<td>${result.crnid}</td>
 												<td>${result.course.name}</td>
 												<td>${result.days}</td>
@@ -145,17 +141,14 @@
 										</c:forEach>
 									</tbody>
 								</table>
-								<input type="submit" id="register" name="register"
-									value="Register">
-							</form>
+							
 						</div>
-						<h3>Drop Class</h3>
+						<h3>Student Details</h3>
 						<div>
-							<form id="drop" action="DropClass" method="post">
+							<c:forEach var="result1" items="${studentDetails}">
 								<table class="table table-striped">
 									<thead>
 										<tr>
-											<th></th>
 											<th>CRN</th>
 											<th>Course</th>
 											<th>Days</th>
@@ -165,46 +158,42 @@
 									</thead>
 
 									<tbody>
-										<c:forEach var="result1" items="${classesRegistered}">
+										
 											<tr>
-												<td><input type="checkbox" id="drop${result1.crnid }" name ="dropChecks" 
-												value="drop${result1.crnid}"></td>
-												<td>${result1.crnid}</td>
-												<td>${result1.course.name}</td>
-												<td>${result1.days}</td>
-												<td>Prof ${result1.instructor.huuser.firstname}
-													${result1.instructor.huuser.lastname}</td>
-												<td>${result1.timeofclass}</td>
+												<td>${result1.key.crnid}</td>
+												<td>${result1.key.course.name}</td>
+												<td>${result1.key.days}</td>
+												<td>Prof ${result1.key.instructor.huuser.firstname}
+													${result1.key.instructor.huuser.lastname}</td>
+												<td>${result1.key.timeofclass}</td>
+											</tr>
+										
+									</tbody>
+								</table>
+								<table class="table table-striped">
+									<thead>
+										<tr>
+											<th>ID</th>
+											<th>First Name</th>
+											<th>last Name</th>
+											<th>Email</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										<c:forEach var="student" items="${result1.value}">
+											<tr>
+												<td>${student.studentid}</td>
+												<td>${student.huuser.firstname}</td>
+												<td>${student.huuser.lastname}</td>
+												<td>${student.huuser.email}</td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
-								<input type="submit" id="drop" name="drop" value="Drop">
-							</form>
+								</c:forEach>
 						</div>
-						<h3>View Schedule</h3>
-						<div>
-							<table class="table table-striped">
-								<tbody>
-									<c:forEach var="result2" items="${classeSchedule}">
-										<tr>
-											<td>${result2.key}</td>
-											<td><table width="100%">
-													<c:forEach var="subs" items="${result2.value}">
-														<tr>
-															<td>${subs.crnid}</td>
-															<td>${subs.course.name}</td>
-															<td>Prof ${subs.instructor.huuser.firstname}
-																${subs.instructor.huuser.lastname}</td>
-															<td>${subs.timeofclass}:00</td>
-														</tr>
-													</c:forEach>
-												</table></td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
+						
 						<h3>View All Courses</h3>
 						<div>
 							Days: 1- Mon, 2-Tue, 3- Wed, 4-Thu, 5-Fri, 6-Sat
@@ -233,29 +222,12 @@
 								</tbody>
 							</table>
 						</div>
-						<h3>Ask Queries</h3>
-						<div>
-							<form id="ask" action="SendQuery" method="post">
-								<div class="form-group">
-									<label for="typeAssgn">Faculty Username:</label> <input
-										type="text" id="insEmail" name="insEmail" value=""
-										class="form-control">
-								</div>
-								<div class="form-group">
-									<label for="typeAssgn">Ask your Question:</label>
-									<textarea id="content" name="content" rows="10" cols="10"
-										class="form-control"></textarea>
-								</div>
-								<input type="submit" id="email" name="email" value="Send">
-							</form>
-						</div>
+						
 					</div>
 
 				</div>
 				<div class="col-sm-2"></div>
 			</div>
-
-
 
 		</div>
 

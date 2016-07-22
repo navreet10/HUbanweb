@@ -62,12 +62,9 @@ public class StudentHome extends HttpServlet {
 					request.getRequestDispatcher("studentHome.jsp").forward(request, response);
 			} else {
 				String username= request.getParameter("name");
-				System.out.println(username);
 				String pwd= request.getParameter("password");
-				System.out.println(pwd);
 				user = LoginDao.getUser(username);	
 				String type = request.getParameter("type");
-				System.out.println(type);
 				Student student = null;
 				Instructor instructor = null;
 				if (type.equals("Faculty")) {
@@ -82,7 +79,7 @@ public class StudentHome extends HttpServlet {
 						request.setAttribute("message", "Credentials are wrong!!");
 						request.getRequestDispatcher("login.jsp").forward(request, response);
 				} else if (student == null && instructor == null) {
-					request.setAttribute("message", "No such student exists!!");
+					request.setAttribute("message", "No such user exists!!");
 					request.getRequestDispatcher("login.jsp").forward(request, response);
 				} else {
 					if (student != null) {
@@ -92,12 +89,21 @@ public class StudentHome extends HttpServlet {
 						request.setAttribute("classes", classes);
 						request.setAttribute("classesRegistered", classesRegistered);
 						request.setAttribute("classeSchedule", classeSchedule);
-						
-					}
-						session.setAttribute("user", user);			
-									
+						session.setAttribute("user", user);							
 						session.setAttribute("userName", user.getUsername());
 						request.getRequestDispatcher("studentHome.jsp").forward(request, response);
+					} else {
+						List<Crn> classes = LoginDao.getClasses();
+						Map<Crn, List<Student>> studentDetails = LoginDao.getStudentDetails(classes);
+						List<Crn> classesInst = LoginDao.getClassesInstructor(instructor);
+						request.setAttribute("classes", classes);
+						request.setAttribute("studentDetails", studentDetails);
+						request.setAttribute("classesInst", classesInst);
+						session.setAttribute("user", user);							
+						session.setAttribute("userName", user.getUsername());
+						request.getRequestDispatcher("instructorHome.jsp").forward(request, response);
+					}
+						
 				}
 				
 				

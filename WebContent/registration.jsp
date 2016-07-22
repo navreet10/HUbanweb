@@ -27,13 +27,7 @@
 			<br> <br>
 			<jsp:include page="navbar.jsp" />
 			<div style="background-color: white;" class="panel-body">
-				<div class="row">
-					<div class="col-sm-2">
-						<img src="${gBigUrl}" alt="${user.name}" />
-					</div>
-					<div class="col-sm-10"></div>
-
-				</div>
+				
 				<c:set var="mes" scope="session" value="${message}" />
 				<c:if test="${mes != null}">
 					<div class="alert alert-success">
@@ -56,8 +50,18 @@
 								<table>
 
 									<tr>
-										<th>Name:</th>
+										<th>Username:</th>
 										<th><input type="text" id="name" name="name" value=""
+											placeholder="add name"></input></th>
+									</tr>
+									<tr>
+										<th>First Name:</th>
+										<th><input type="text" id="firstname" name="firstname" value=""
+											placeholder="add name"></input></th>
+									</tr>
+									<tr>
+										<th>Last Name:</th>
+										<th><input type="text" id="lastname" name="lastname" value=""
 											placeholder="add name"></input></th>
 									</tr>
 
@@ -73,11 +77,6 @@
 											value="" placeholder="add password"></input></th>
 									</tr>
 
-									<tr>
-										<th>Zip:</th>
-										<th><input type="text" id="zip" name="zip" value=""
-											placeholder="add zip"></input></th>
-									</tr>
 
 								</table>
 							</div>

@@ -3,18 +3,16 @@ package controllers;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import dao.LoginDao;
 import model.Crn;
 import model.Huuser;
-import model.Instructor;
 import model.Student;
 
 /**
@@ -46,6 +44,7 @@ public class EnrollClass extends HttpServlet {
 		try {
 			HttpSession session = request.getSession();
 			Huuser user = (Huuser) session.getAttribute("user");
+			Student student = (Student) session.getAttribute("student");
 			if ( user == null) {
 				request.setAttribute("message", "Log in!!");
 				request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -62,8 +61,14 @@ public class EnrollClass extends HttpServlet {
 						checked.add(c);
 					}
 				}
-				String message = LoginDao.enrollStudent(checked);
-				request.setAttribute("message",message);
+				String message = LoginDao.enrollStudent(checked, student);
+				List<Crn> classes = LoginDao.getClasses();
+				List<Crn> classesRegistered = LoginDao.getClassesRegistered(student);
+				Map<String, List<Crn>> classeSchedule = LoginDao.getClasseSchedule(classesRegistered);
+				request.setAttribute("classes", classes);
+				request.setAttribute("classesRegistered", classesRegistered);
+				request.setAttribute("classeSchedule", classeSchedule);
+				request.setAttribute("message",message);				
 				request.getRequestDispatcher("studentHome.jsp").forward(request, response);
 			}
 			
